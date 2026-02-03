@@ -10,9 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --sf-blue: #0037ff;
+            --sf-blue: #3b82f6;
             --sf-purple: #9d00ff;
-            --sf-border: rgba(255, 255, 255, 0.12);
+            --sf-border: rgba(255, 255, 255, 0.1);
             --sf-bg: #050505;
         }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -33,23 +33,23 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
-            text-shadow: 0 0 30px rgba(255,255,255,0.1);
+            text-shadow: 0 0 30px rgba(255,255,255,0.05);
         }
 
-        /* --- Flowing Text Gradients (Subtitles & Badges) --- */
+        /* --- Smooth Shimmer Text (Subtitles) --- */
         .text-flow-blue {
             background: linear-gradient(90deg, #3b82f6, #2dd4bf, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
-            animation: textFlow 3s linear infinite;
+            animation: textFlow 8s linear infinite;
         }
         .text-flow-vibrant {
             background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899, #6366f1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
-            animation: textFlow 4s linear infinite;
+            animation: textFlow 10s linear infinite;
         }
 
         @keyframes textFlow {
@@ -57,7 +57,7 @@
             100% { background-position: 200% center; }
         }
 
-        /* --- Dynamic Flowing Border Effect --- */
+        /* --- New Flowing Border (No Flash) --- */
         .border-gradient-flow {
             position: relative;
             background: rgba(255, 255, 255, 0.02);
@@ -68,41 +68,42 @@
         .border-gradient-flow::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                from 0deg,
-                transparent 0%,
-                #3b82f6 25%,
-                transparent 50%,
-                #9d00ff 75%,
-                transparent 100%
+            inset: -1px;
+            background: linear-gradient(
+                90deg, 
+                transparent, 
+                rgba(59, 130, 246, 0.4), 
+                transparent, 
+                rgba(157, 0, 255, 0.4), 
+                transparent
             );
-            animation: rotateBorder 6s linear infinite;
+            background-size: 400% 100%;
+            animation: borderShimmer 12s linear infinite;
             z-index: -2;
         }
         .border-gradient-flow::after {
             content: '';
             position: absolute;
             inset: 1px;
-            background: var(--sf-bg);
+            background: #050505;
             border-radius: 23px;
             z-index: -1;
         }
 
-        @keyframes rotateBorder {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes borderShimmer {
+            0% { background-position: 100% 0%; }
+            100% { background-position: -100% 0%; }
         }
 
         /* --- Global UI --- */
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--sf-border);
         }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
         /* Preloader */
         #preloader {
@@ -114,7 +115,7 @@
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            transition: opacity 0.8s ease;
+            transition: opacity 0.8s ease-out;
         }
         .loader-logo {
             font-size: 3rem;
@@ -123,7 +124,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 2rem;
-            animation: pulse 2s infinite ease-in-out;
         }
         .loader-bar-container {
             width: 200px;
@@ -135,10 +135,9 @@
             width: 0%;
             height: 100%;
             background: #3b82f6;
-            animation: load 2s ease forwards;
+            animation: load 2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
         }
         @keyframes load { to { width: 100%; } }
-        @keyframes pulse { 0%, 100% { opacity: 0.6; transform: scale(0.98); } 50% { opacity: 1; transform: scale(1); } }
     </style>
 <script type="importmap">
 {
@@ -163,9 +162,11 @@
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const p = document.getElementById('preloader');
-                p.style.opacity = '0';
-                setTimeout(() => p.style.display = 'none', 800);
-            }, 1500);
+                if (p) {
+                    p.style.opacity = '0';
+                    setTimeout(() => p.style.display = 'none', 800);
+                }
+            }, 1000);
         });
     </script>
 </body>
