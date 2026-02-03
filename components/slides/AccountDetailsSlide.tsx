@@ -26,7 +26,7 @@ export const AccountDetailsSlide: React.FC<{ lang: 'en' | 'zh' }> = ({ lang }) =
       </div>
 
       <div className="w-full max-w-xl lg:max-w-none order-1 lg:order-2">
-        <div className="glass-card p-1 bg-gradient-to-br from-blue-500/50 via-purple-500/30 to-transparent rounded-[32px] overflow-hidden shadow-2xl">
+        <div className="border-gradient-flow p-[1px] rounded-[32px] shadow-2xl overflow-hidden">
           <div className="bg-[#050505] p-8 md:p-14 rounded-[31px] space-y-10 md:space-y-14 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 blur-[80px] -z-10" />
             
