@@ -5,25 +5,33 @@ import { translations } from '../../translations';
 export const UseCasesSlide: React.FC<{ lang: 'en' | 'zh' }> = ({ lang }) => {
   const t = translations[lang];
   return (
-    <div className="flex flex-col w-full max-w-5xl mx-auto h-full justify-center px-4 space-y-12 md:space-y-24 text-center relative">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-blue-600/10 blur-[120px] -z-10" />
+    <div className="flex flex-col w-full max-w-5xl mx-auto h-full justify-center px-4 space-y-10 md:space-y-16 text-center relative">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-blue-600/10 blur-[160px] -z-10" />
       
-      <div className="space-y-6">
-        <h2 className="text-5xl md:text-8xl font-black tracking-tighter text-gradient uppercase leading-tight">{t.slide8_title}</h2>
-        <p className="text-lg md:text-3xl text-gradient-silver font-bold max-w-3xl mx-auto">{t.slide8_sub}</p>
+      <div className="space-y-4 md:space-y-6">
+        <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-titanium uppercase leading-none">
+          {t.slide8_title}
+        </h2>
+        <p className="text-lg md:text-3xl text-flow-blue font-black max-w-3xl mx-auto tracking-tight uppercase leading-tight opacity-90">
+          {t.slide8_sub}
+        </p>
       </div>
 
-      <div className="flex flex-col items-center gap-12 md:gap-20">
-         <div className="glass-card p-14 md:p-24 relative overflow-hidden group border-blue-500/40 bg-black/40 shadow-[0_0_60px_rgba(37,99,235,0.2)]">
-            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
-            <div className="text-7xl md:text-[10rem] font-black text-gradient-vibrant tracking-tighter drop-shadow-[0_0_40px_rgba(37,99,235,0.6)] animate-pulse">
+      <div className="flex flex-col items-center gap-10 md:gap-14">
+         <div className="border-gradient-flow p-10 md:p-20 rounded-[3rem] shadow-[0_0_80px_rgba(59,130,246,0.2)]">
+            <div className="text-6xl md:text-[9rem] font-black text-flow-vibrant tracking-tighter leading-none animate-pulse">
               {t.slide8_stat}
             </div>
-            <div className="text-[14px] md:text-[18px] font-black uppercase tracking-[0.5em] text-white mt-8 drop-shadow-md">Annual Percentage Yield</div>
+            <div className="text-[12px] md:text-xl font-black uppercase tracking-[0.5em] text-white/40 mt-6 md:mt-10">
+              Annual Percentage Yield
+            </div>
          </div>
-         <p className="text-sm md:text-2xl text-white font-medium max-w-2xl leading-relaxed italic drop-shadow-lg">
-           "{t.slide8_p}"
-         </p>
+         
+         <div className="glass-card p-6 md:p-10 border-white/5 bg-white/[0.02] max-w-3xl rounded-3xl">
+            <p className="text-base md:text-2xl text-white font-medium leading-relaxed italic tracking-tight opacity-80">
+              "{t.slide8_p}"
+            </p>
+         </div>
       </div>
     </div>
   );
