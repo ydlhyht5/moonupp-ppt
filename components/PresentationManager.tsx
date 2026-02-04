@@ -17,8 +17,9 @@ export const PresentationManager: React.FC<PresentationProps> = ({ currentSlideI
                 : 'opacity-0 translate-y-12 scale-102 pointer-events-none'
           }`}
         >
-          <div className="w-full h-full flex items-center justify-center px-4 pt-24 pb-12 md:p-12 lg:p-24 overflow-y-auto no-scrollbar">
-            <div className="w-full max-w-7xl mx-auto flex items-center justify-center min-h-fit">
+          {/* Reduced vertical padding on mobile (pt-20 pb-16) to ensure content fits without scroll */}
+          <div className="w-full h-full flex items-center justify-center px-4 pt-20 pb-16 md:pt-24 md:pb-12 lg:p-24 overflow-y-auto no-scrollbar">
+            <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center min-h-0">
               {slide.content}
             </div>
           </div>
